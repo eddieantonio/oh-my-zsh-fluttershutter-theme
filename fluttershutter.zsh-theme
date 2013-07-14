@@ -1,19 +1,5 @@
 # "fluttershutter" theme, adapted from the 'wedisagree' theme
 
-# Might also want to rip-off this:
-# http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
-
-# Here are the colours from Textmate's Monokai theme:
-# 
-# Black: 0, 0, 0
-# Red: 229, 34, 34
-# Green: 166, 227, 45
-# Yellow: 252, 149, 30
-# Blue: 196, 141, 255
-# Magenta: 250, 37, 115
-# Cyan: 103, 217, 240
-# White: 242, 242, 242
-
 # Colours!
 fs_outline=%{$'\e[38;5;222m'%}
 fs_body=%{$'\e[38;5;229m'%}
@@ -23,10 +9,6 @@ fs_mane=%{$'\e[38;5;218m'%}
 fs_mane_outline=%{$'\e[38;5;207m'%}
 reset_=%{$reset_color%}
 
-# My old prompts:
-#PROMPT="${fs_mane}%n${fs_outline}@${fs_body}%m ${fs_eye_light}%20<..<%c%<<${reset_} %(?..${fs_mane_outline}%?${reset_} )%(!.%B#.$) "
-#RPROMPT="${fs_eye_dark}[${fs_eye_light}%T${fs_eye_dark}]${reset_}"
-
 # The prompt
 PROMPT='${fs_mane}[${fs_body}%c${fs_mane}]${reset_} '
 
@@ -34,7 +16,7 @@ PROMPT='${fs_mane}[${fs_body}%c${fs_mane}]${reset_} '
 RPROMPT='${time} ${reset_}$(git_prompt_info)%{$reset_color%}$(git_prompt_status)%{$reset_color%}'
 
 # Add this at the start of RPROMPT to include rvm info showing ruby-version@gemset-name
-# %{$fg[yellow]%}$(~/.rvm/bin/rvm-prompt)%{$reset_color%} 
+# %{$fg[yellow]%}$(~/.rvm/bin/rvm-prompt)%{$reset_color%}
 
 # local time, color coded by last return code
 time_enabled="%(?.${fs_eye_dark}.%{$fg[red]%})%T${reset_}"
@@ -55,7 +37,7 @@ ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[magenta]%} ♆" # ⓤ ⑊
 
 # More symbols to choose from:
 # ☀ ✹ ☄ ♆ ♀ ♁ ♐ ♇ ♈ ♉ ♚ ♛ ♜ ♝ ♞ ♟ ♠ ♣ ⚢ ⚲ ⚳ ⚴ ⚥ ⚤ ⚦ ⚒ ⚑ ⚐ ♺ ♻ ♼ ☰ ☱ ☲ ☳ ☴ ☵ ☶ ☷
-# ✡ ✔ ✖ ✚ ✱ ✤ ✦ ❤ ➜ ➟ ➼ ✂ ✎ ✐ ⨀ ⨁ ⨂ ⨍ ⨎ ⨏ ⨷ ⩚ ⩛ ⩡ ⩱ ⩲ ⩵  ⩶ ⨠ 
+# ✡ ✔ ✖ ✚ ✱ ✤ ✦ ❤ ➜ ➟ ➼ ✂ ✎ ✐ ⨀ ⨁ ⨂ ⨍ ⨎ ⨏ ⨷ ⩚ ⩛ ⩡ ⩱ ⩲ ⩵  ⩶ ⨠
 # ⬅ ⬆ ⬇ ⬈ ⬉ ⬊ ⬋ ⬒ ⬓ ⬔ ⬕ ⬖ ⬗ ⬘ ⬙ ⬟  ⬤ 〒 ǀ ǁ ǂ ĭ Ť Ŧ
 
 # Determine if we are using a gemset.
@@ -63,7 +45,7 @@ function rvm_gemset() {
     GEMSET=`rvm gemset list | grep '=>' | cut -b4-`
     if [[ -n $GEMSET ]]; then
         echo "%{$fg[yellow]%}$GEMSET%{$reset_color%}|"
-    fi 
+    fi
 }
 
 # Determine the time since last commit. If branch is clean,
@@ -80,12 +62,12 @@ function git_time_since_commit() {
             # Totals
             MINUTES=$((seconds_since_last_commit / 60))
             HOURS=$((seconds_since_last_commit/3600))
-           
+
             # Sub-hours and sub-minutes
             DAYS=$((seconds_since_last_commit / 86400))
             SUB_HOURS=$((HOURS % 24))
             SUB_MINUTES=$((MINUTES % 60))
-            
+
             if [[ -n $(git status -s 2> /dev/null) ]]; then
                 if [ "$MINUTES" -gt 30 ]; then
                     COLOR="$ZSH_THEME_GIT_TIME_SINCE_COMMIT_LONG"

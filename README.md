@@ -7,11 +7,11 @@ This is mostly for my personal use, as it's a minor modification of the
 
 # Install
 
-With oh-my-zsh setup, do the following:
+With oh-my-zsh installed, do the following:
 
     ln ./fluttershutter.zsh-theme $ZSH/themes/fluttershutter.zsh-theme
 
-The have the following in your `~/.zshrc`:
+Then have the following in your `~/.zshrc`:
 
     ZSH_THEME="fluttershutter"
 
